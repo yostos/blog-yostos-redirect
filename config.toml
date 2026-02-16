@@ -1,0 +1,114 @@
+base_url = "https://blog.yostos.org"
+title = "Coded Chords"
+description = "A personal blog"
+author = "Toshiyuki Yoshida"
+
+theme = "tabi"
+
+default_language = "en"
+compile_sass = true
+minify_html = true
+build_search_index = false  # 日本語非対応のためPagefindを別途使用
+generate_feeds = true
+
+taxonomies = [{name = "tags", feed = true}]
+
+[slugify]
+anchors = "safe"  # 日本語見出しのアンカーリンクを保持
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
+
+[markdown]
+bottom_footnotes = true
+definition_list = true
+
+[markdown.highlighting]
+theme = "catppuccin-frappe"
+style = "class"  # tabi必須
+
+[extra]
+enable_csp = false
+theme_switcher = true
+show_reading_time = true
+show_date = true
+long_date_format = "%Y-%m-%d"
+short_date_format = "%Y-%m-%d"
+archive_date_format = "%Y-%m-%d"
+toc = false
+quick_navigation_buttons = true
+social_media_card = "images/coded-chords.webp"
+favicon = "apple-touch-icon.png"
+copy_button = true
+mermaid = false  # ページ単位で [extra] mermaid = true で有効化
+show_previous_next_article_links = true
+stylesheets = ["custom.css"]
+copyright = "© $CURRENT_YEAR $AUTHOR • Content licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)"
+remote_repository_url = "https://github.com/yostos/blog-yostos"
+show_remote_source = true
+show_remote_changes = true
+
+menu = [
+    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "archive", url = "archive", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    { name = "music", url = "music", trailing_slash = true },
+    { name = "uses", url = "uses", trailing_slash = true },
+    { name = "about", url = "about", trailing_slash = true },
+]
+
+socials = [
+    { name = "github", url = "https://github.com/yostos", icon = "github" },
+    { name = "bluesky", url = "https://bsky.app/profile/yostos.bsky.social", icon = "bluesky" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/toshiyukiyoshida/", icon = "linkedin" },
+    { name = "nostr", url = "https://nostter.app/nprofile1qqsz8c9hcxxw2rydxkg8r0x32d4ql8h6mdkgrdf4982jfqclay7cakgvxxml9", icon = "nostr" },
+]
+
+footer_menu = [
+    { url = "license", name = "license", trailing_slash = true },
+]
+
+[extra.analytics]
+service = "goatcounter"
+id = "yostos"
+
+[extra.giscus]
+enabled_for_all_posts = true
+automatic_loading = true
+repo = "yostos/blog-comments"
+repo_id = "R_kgDOOI4xBQ"
+category = "Announcements"
+category_id = "DIC_kwDOOI4xBc4CoDXE"
+mapping = "pathname"  # TODO: 既存コメント移行後に "slug" に変更検討
+strict_title_matching = 0
+enable_reactions = 1
+comment_box_above_comments = false
+light_theme = "light"
+dark_theme = "dark"
+lang = "ja"
+lazy_loading = true
+
+iine = true
+
+[link_checker]
+# 外部リンクチェックから除外するURLプレフィックス
+skip_prefixes = [
+    # 政府系サイト（User-Agentベースのアクセス制限）
+    "https://www.gov-online.go.jp/",
+    "https://www.mofa.go.jp/",
+    "https://www.mlit.go.jp/",
+    "https://laws.e-gov.go.jp/",
+    # アンカー仕様問題
+    "https://www.openstreetmap.org/",
+    # サーバー接続問題・レート制限
+    "https://flyers.plus/",
+    "https://venturebeat.com/",
+    # botアクセスをブロック（403 Forbidden）
+    "https://www.bloomberg.com/",
+    "https://soundcloud.com/",
+    "https://flic.kr/",
+]
