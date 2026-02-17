@@ -18,6 +18,11 @@ OLD_DOMAIN = "https://blog.yostos.org"
 NEW_DOMAIN = "https://codedchords.dev"
 CNAME_HOST = "blog.yostos.org"
 
+# リダイレクト差し替えをスキップするファイル（Google Search Console 確認等）
+PRESERVE_FILES = {
+    "googlef2d3aeece0913e24.html",
+}
+
 SCRIPT_DIR = Path(__file__).parent
 PUBLIC_DIR = SCRIPT_DIR / "public"
 
@@ -91,6 +96,10 @@ def replace_html_files():
     regular_count = 0
 
     for html_path in html_files:
+        if html_path.name in PRESERVE_FILES:
+            print(f"  Preserved: {html_path.relative_to(PUBLIC_DIR)}")
+            continue
+
         html = html_path.read_text(encoding="utf-8", errors="replace")
 
         refresh_url = extract_refresh_url(html)
